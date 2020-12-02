@@ -235,6 +235,13 @@ func AsyncRead() MountOption {
 	}
 }
 
+func CaseSensitive() MountOption {
+	return func(conf *mountConfig) error {
+		conf.initFlags |= InitCaseSensitive
+		return nil
+	}
+}
+
 // WritebackCache enables the kernel to buffer writes before sending
 // them to the FUSE server. Without this, writethrough caching is
 // used.
